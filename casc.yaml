@@ -1,0 +1,21 @@
+jenkins:
+  systemMessage: " Jenkins para facilitar o acesso aos logs e reiniciar os containeres da aplicação. \n
+  Rodar o job desejado, acessar ele, clicar no build gerado e clicar em 'console output'. \n
+  Se os jobs pararem de funcionar, provavelmente o script de leitura no host está parado, falar para algum dev acessar e executar o cron_job.sh na pasta 
+  do jenkins do linux"
+  # agentProtocols:
+  #   - "JNLP4-connect"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: ${ENV_JENKINS_USER:-demoAdmin}
+          password: ${ENV_JENKINS_PASS:-passw0rd}
+  authorizationStrategy:
+    globalMatrix:
+      grantedPermissions:
+        - "Overall/Read:authenticated"
+        - "Job/Read:authenticated"
+        - "View/Read:authenticated"
+        - "Overall/Administer:authenticated"
+  crumbIssuer: "standard"

@@ -1,0 +1,8 @@
+ssh-agent
+ssh-credentials
+ssh-slaves
+antisamy-markup-formatter:latest
+configuration-as-code:latest
+credentials-binding:latest
+matrix-auth:latest
+pam-auth:latest

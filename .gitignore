@@ -1,0 +1,13 @@
+
+jenkins_home/
+
+pipes/
+
+.env
+
+jobs/*/builds/
+jobs/*/nextBuildNumber
+
+jenkins-client.tar
+
+jenkins-clients.zip

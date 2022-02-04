@@ -1,0 +1,24 @@
+version: '3'
+services:
+  jenkins-client:
+    image: f2m-jenkins-client:v8.05.2
+    logging:
+      options:
+        max-file: "5"
+        max-size: "20m"
+    build:
+      context: .
+      dockerfile: ./jenkins-client.Dockerfile
+    environment:
+      MINING_CONTROL_BACKEND: ${MINING_CONTROL_BACKEND:-/home/ubuntu/mining-control-backend}
+      JENKINS_PATH: ${PWD}
+      ENV_JENKINS_USER: ${ENV_JENKINS_USER:-adminF2M}
+      ENV_JENKINS_PASS: ${ENV_JENKINS_PASS:-passw0rdAdminF2M}
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./pipes:/pipes
+      - ./jenkins_home:/var/jenkins_home
+      - ./jobs:/var/jenkins_home/jobs
+      - ./casc.yaml:/var/jenkins_home/casc.yaml
